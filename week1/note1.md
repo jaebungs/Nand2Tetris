@@ -55,3 +55,57 @@ Interface is uniqude, but implementation is not.
 ## Hardware Simulation
 Helps verifing HDL program. Script based simulation, one file is HDL, the other is test file.
 
+## Multi-Bit Buses
+
+##### Multiplexor
+a-|\
+    -- out
+b-|/
+   |
+   sel
+if (sel = 0) 
+    out = a
+else
+    out = b
+
+Another example is AndMuxOr
+when sel is 0, And gate
+otherwise, Or gate
+
+##### Demultiplexor
+     / -- a 
+in --
+     \ -- b
+    |
+    sel
+if (sel == 0)
+    {a, b} = {in, 0}
+else
+    {a, b} = {0, in}
+
+##### And 16
+a --(16) -- |
+            |D -- (16)--out
+b --(16) -- |
+16 bit buses
+
+a = 1 0 1 0 1 0 1 0 1 ..
+b = 0 0 1 0 1 1 0 1 0 ..
+out=0 0 1 0 1 0 0 1 0 ..
+
+##### Mux4Way16
+Multi-way variant
+(all 16 bit bus in)
+a--|\
+b--|  \     -- out 16 bit
+c--|  /
+d--|/ |
+      |
+      sel (2)
+sel1 sel2  out
+  0     0   a
+  0     1   b
+  1     0   c
+  1     1   d
+
+
