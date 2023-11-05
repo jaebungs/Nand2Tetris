@@ -1,0 +1,14 @@
+/**
+ * And gate:
+ * out = (((a == 1) && (b == 1))), 1, 0)
+ *
+ * The second Nand could be Not(in=nandOut, out=out)
+ */
+CHIP And {
+    IN a, b;
+    OUT out;
+    
+    PARTS:
+    Nand(a=a, b=b, out=nandOut);
+    Nand(a=nandOut, b=nandOut, out=out);
+}
